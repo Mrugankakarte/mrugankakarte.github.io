@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mrugank Milind Akarte</title>
+    <link>http://mrugankakarte.github.io/author/mrugank-akarte/</link>
+    <description>Recent content on Mrugank Milind Akarte</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Mar 2018 19:00:03 +0530</lastBuildDate>
+    
+	<atom:link href="http://mrugankakarte.github.io/author/mrugank-akarte/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Toxic Comment Classifier</title>
+      <link>http://mrugankakarte.github.io/blog/toxic-comments-classifier/</link>
+      <pubDate>Sun, 25 Mar 2018 19:00:03 +0530</pubDate>
+      
+      <guid>http://mrugankakarte.github.io/blog/toxic-comments-classifier/</guid>
+      <description>This project is based on Kaggle Competition: Toxic Comment Classification Challenge</description>
+    </item>
+    
+  </channel>
+</rss>
