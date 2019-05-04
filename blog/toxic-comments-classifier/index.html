@@ -104,15 +104,15 @@
 
 <ul>
 <li><p>The dataset was made up of 8 columns, id, Comments and 6 categories; toxic, severe_toxic, obscene, threat, insult and identity_hate.
-<img src="/blog/Toxic_comments_classifier/Data_ss.PNG" alt="Dataset" /></p></li>
+<img src="/blog/images/Data_ss.PNG" alt="Dataset" /></p></li>
 
 <li><p>Dimensions of training set = 159571 x 8 and dimensions of Testing set = 153164 x 2</p></li>
 
 <li><p>Most frequent words in training set are shown in bar graph
-<img src="/blog/Toxic_comments_classifier/Rplot.png" alt="freq_words" /></p></li>
+<img src="/blog/images/Rplot.png" alt="freq_words" /></p></li>
 
 <li><p>Following graph shows most common words in each category.
-<img src="/blog/Toxic_comments_classifier/Rplot01.png" alt="multi-plot" /></p></li>
+<img src="/blog/images/Rplot01.png" alt="multi-plot" /></p></li>
 </ul>
 
 <h2 id="model">Model</h2>
@@ -130,11 +130,11 @@ The following model architecture was developed with the help of kaggle kernals p
 <ul>
 <li><p><strong>GRU</strong><br />
 GRU units: 256, Dense units: 128, dropout: 0.2, learning-rate: 0.65, batch-size: 128, epoch: 4
-<img src="/blog/Toxic_comments_classifier/gru.PNG" alt="gru" /></p></li>
+<img src="/blog/images/gru.PNG" alt="gru" /></p></li>
 
 <li><p><strong>TextCNN</strong><br />
 Filter-size: (1,2,3,5), Filters: 32, dropout: 0.2, learning-rate: 0.003, batch size=64, epoch=10, patience=3
-<img src="/blog/Toxic_comments_classifier/textcnn.png" alt="textcnn" /></p></li>
+<img src="/blog/images/textcnn.png" alt="textcnn" /></p></li>
 </ul>
 
 <p>These models with parameters were finalized after running many iterations with different values for each parameter. I tried 5-Fold cross validation but a single run took more than 5hrs. Due to computation limitations, I decided to skip cross-validation approach and use only hold out set to determine the model performance.</p>
@@ -168,8 +168,8 @@ where input gate = sigmoid layer x tanh layer. Finally in output layer, sigmoid 
 
 <p>I made a application which shows how toxic the sentence is in real time. I couldn&rsquo;t host it since the models were trained on GPU. Following are few screenshots of application.</p>
 
-<p><img src="/blog/Toxic_comments_classifier/demo1.PNG" alt="demo1" />
-<img src="/blog/Toxic_comments_classifier/demo2.PNG" alt="demo2" /></p>
+<p><img src="/blog/images/demo1.PNG" alt="demo1" />
+<img src="/blog/images/demo2.PNG" alt="demo2" /></p>
 
 <h3 id="conclusion">Conclusion</h3>
 
