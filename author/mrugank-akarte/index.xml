@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mrugank Milind Akarte</title>
-    <link>http://example.org/author/mrugank-akarte/</link>
+    <link>http://mrugankakarte.github.io/author/mrugank-akarte/</link>
     <description>Recent content on Mrugank Milind Akarte</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="http://example.org/author/mrugank-akarte/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://mrugankakarte.github.io/author/mrugank-akarte/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
