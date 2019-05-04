@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Author on Mrugank Milind Akarte</title>
-    <link>http://mrugankakarte.github.io/author/</link>
+    <link>https://mrugankakarte.github.io/author/</link>
     <description>Recent content in Author on Mrugank Milind Akarte</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 12 Sep 2018 14:51:12 +0600</lastBuildDate>
     
-	<atom:link href="http://mrugankakarte.github.io/author/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mrugankakarte.github.io/author/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>John Doe</title>
-      <link>http://mrugankakarte.github.io/author/john-doe/</link>
+      <link>https://mrugankakarte.github.io/author/john-doe/</link>
       <pubDate>Wed, 12 Sep 2018 14:51:12 +0600</pubDate>
       
-      <guid>http://mrugankakarte.github.io/author/john-doe/</guid>
+      <guid>https://mrugankakarte.github.io/author/john-doe/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Somrat</title>
-      <link>http://mrugankakarte.github.io/author/somrat/</link>
+      <link>https://mrugankakarte.github.io/author/somrat/</link>
       <pubDate>Wed, 12 Sep 2018 14:39:16 +0600</pubDate>
       
-      <guid>http://mrugankakarte.github.io/author/somrat/</guid>
+      <guid>https://mrugankakarte.github.io/author/somrat/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Jamica Jock</title>
-      <link>http://mrugankakarte.github.io/author/jamica-jock/</link>
+      <link>https://mrugankakarte.github.io/author/jamica-jock/</link>
       <pubDate>Wed, 12 Sep 2018 12:52:36 +0600</pubDate>
       
-      <guid>http://mrugankakarte.github.io/author/jamica-jock/</guid>
+      <guid>https://mrugankakarte.github.io/author/jamica-jock/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>http://mrugankakarte.github.io/author/mrugank-akarte/</link>
+      <link>https://mrugankakarte.github.io/author/mrugank-akarte/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mrugankakarte.github.io/author/mrugank-akarte/</guid>
+      <guid>https://mrugankakarte.github.io/author/mrugank-akarte/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Themefisher</title>
-      <link>http://mrugankakarte.github.io/author/themefisher/</link>
+      <link>https://mrugankakarte.github.io/author/themefisher/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://mrugankakarte.github.io/author/themefisher/</guid>
+      <guid>https://mrugankakarte.github.io/author/themefisher/</guid>
       <description></description>
     </item>
     
