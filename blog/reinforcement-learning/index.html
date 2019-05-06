@@ -94,17 +94,17 @@
 
 <h1 id="introduction">Introduction</h1>
 
-<p>Reinforcement learning is a type of machine learning problem which is solved using the past experiences and interactions of the agent with the world. In other words, Reinforcement learning is mappings of stiuations with the available actions to maximize a numerical reward signal. Usually rewards are positive if the action taken is desirable and negative if the action is undesirable. The agent is never told which action to take or which action is optimal for a given situation, but instead it must discover on its own which actions to take that would yeild maximum reward. In many cases the action taken for a given situation may affect not only immediate reward but also the next situation and may have consequences on future rewards. These characteristics of trial and error search and delayed rewards and distinguishing features of reinforcement learning.</p>
+<p>Reinforcement learning is a type of machine learning problem which is solved using the past experiences and interactions of the agent with the world. In other words, Reinforcement learning is mappings of situations with the available actions to maximize a numerical reward signal. Usually rewards are positive if the action taken is desirable and negative if the action is undesirable. The agent is never told which action to take or which action is optimal for a given situation, but instead it must discover on its own which actions to take that would yield maximum reward. In many cases the action taken for a given situation may affect not only immediate reward but also the next situation and may have consequences on future rewards. These characteristics of trial and error search and delayed rewards and distinguishing features of reinforcement learning.</p>
 
-<p>Reinforcment learning is different from supervised and unsupervised learning. Supervised learning is learning for a training set of known and labelled examples. Each example contains a set of features with its appropriate label. Reinforcement learning is an interactive problem in which it is often imposible to obtain the examples of desired behaviour that are both correct and representative of all situation for which the agent has to act. Unsupervised learning is about finding hidden structure in an unlabelled dataset. Reinforcement learning is about maximizing the reward by taking actions in an unseen situation. Although finding hidden structure in data will be useful for learning but it does not address its the objective. Hence, Reinforcment is considered different from supervised and unsupervised machine learning.</p>
+<p>Reinforcement learning is different from supervised and unsupervised learning. Supervised learning is learning for a training set of known and labelled examples. Each example contains a set of features with its appropriate label. Reinforcement learning is an interactive problem in which it is often impossible to obtain the examples of desired behaviour that are both correct and representative of all situation for which the agent must act. Unsupervised learning is about finding hidden structure in an unlabelled dataset. Reinforcement learning is about maximizing the reward by taking actions in an unseen situation. Although finding hidden structure in data will be useful for learning but it does not address its the objective. Hence, Reinforcement is considered different from supervised and unsupervised machine learning.</p>
 
-<p>The problem of reinforcment learning is formalized as a fully observed or partial Markov Decision Process (MDP). We will discuss MDP subsequently, first lets discuss the basic terminologies used in reinforcment learning and one the most important challenges faced, trade-off between exploration and exploitation. To obtain a positive reward, the agent has to take right action for a given situation. Since the agent is never told what the optimal action is, the agent has to take some action experience the consequences. It has to try all the actions available and then select the action which gives maximum reward. In this process the agent has to <em>exploit</em> what he already knows from the previous actions taken and <em>explore</em> all the possible options to make a better action selection in the future. The dilemma here is that neither exploration nor exploitation can be pursued exclusively without failing at task. The agent must try a variety of actions and progressively favor those which appear to be best.</p>
+<p>The problem of reinforcement learning is formalized as a fully observed or partial Markov Decision Process (MDP). We will discuss MDP subsequently, first let’s discuss the basic terminologies used in reinforcement learning and one the most important challenges faced, trade-off between exploration and exploitation. To obtain a positive reward, the agent has to take right action for a given situation. Since the agent is never told what the optimal action is, the agent must take some action and experience the consequences. It must try all the actions available and then select the action which gives maximum reward. In this process the agent has to <em>exploit</em> what he already knows from the previous actions taken and <em>explore</em> all the possible options to make a better action selection in the future. The dilemma here is that neither exploration nor exploitation can be pursued exclusively without failing at task. The agent must try a variety of actions and progressively favour those which appear to be best.</p>
 
 <p><img src="/blog/images/rl-mdp.PNG" alt="mdp" title="Markov Decision Process" />(<em>Source: Richard Sutton and Andrew Barto, Reinforcement learning Second Edition 2018</em>)</p>
 
 <h1 id="reinforcement-learning-system">Reinforcement learning system</h1>
 
-<p>Reinforcement learning system consists of <em>a policy</em>, <em>reward signal</em>, <em>value function</em>, and optinally <em>a model</em> of environment.</p>
+<p>Reinforcement learning system consists of <em>a policy</em>, <em>reward signal</em>, <em>value function</em>, and optionally <em>a model</em> of environment.</p>
 
 <ul>
 <li><em>Policy</em> defines what action to take at any given situation (hereafter referred as <em>state</em>). It is basically a mapping of actions to states of environment. It can be as simple as any function or a lookup table.</li>
@@ -124,7 +124,7 @@
 4. We modify the agents policy based on the rewards received<br />
 5. Agent again acts for the new state using the modified policy</p>
 
-<p>This process continues untill the task is acomplished.</p>
+<p>This process continues until the task is accomplished.</p>
 
 <h1 id="policy-and-value-functions">Policy and Value Functions</h1>
 
@@ -147,7 +147,7 @@
 
 <p>In policy based reinforcement learning, the objective is to optimize the policy function &#00960;(s) The policy determines the probability for each possible action given a state and an action from this probability distribution is selected.</p>
 
-<p>In next article we will discuss about the value based methods called <em>Q-learning</em>, <em>Deep Q-Learning</em> and its varients.</p>
+<p>In next article we will discuss about the value based methods called <em>Q-learning</em>, <em>Deep Q-Learning</em> and its variants.</p>
 
 <p><em>PS: Most of the details are from Barto and Sutton, Reinforcement Book, Second Edition 2018. This post is my understanding of the topics from the book. If you would like to go in more details please refer the book.</em></p>
 
