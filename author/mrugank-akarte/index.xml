@@ -6,10 +6,19 @@
     <description>Recent content on Mrugank Milind Akarte</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 May 2019 20:00:31 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 12 May 2019 20:00:31 +0530</lastBuildDate>
     
 	<atom:link href="https://mrugankakarte.github.io/author/mrugank-akarte/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Q-Learning</title>
+      <link>https://mrugankakarte.github.io/blog/q-learning/</link>
+      <pubDate>Sun, 12 May 2019 20:00:31 +0530</pubDate>
+      
+      <guid>https://mrugankakarte.github.io/blog/q-learning/</guid>
+      <description>Q-Learning Q-Learning is a value based reinforcement algorithm. The idea is that we create a Q-Table which has all the states represented as rows of Q-table and actions as columns.</description>
+    </item>
     
     <item>
       <title>Reinforcement Learning</title>
