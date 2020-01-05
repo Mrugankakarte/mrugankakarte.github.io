@@ -1,68 +1,63 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://mrugankakarte.github.io/author/mrugank-akarte/</loc>
-    <lastmod>2019-09-06T11:00:00-04:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mrugankakarte.github.io/author/</loc>
-    <lastmod>2019-09-06T11:00:00-04:30</lastmod>
-    <priority>0</priority>
+    <lastmod>2020-01-05T09:00:00-04:30</lastmod>
   </url>
   
   <url>
-    <loc>https://mrugankakarte.github.io/blog/</loc>
-    <lastmod>2019-09-06T11:00:00-04:30</lastmod>
-    <priority>0</priority>
+    <loc>https://mrugankakarte.github.io/exploratory-data-analysis/</loc>
+    <lastmod>2020-01-05T09:00:00-04:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mrugankakarte.github.io/author/mrugank-akarte/</loc>
+    <lastmod>2020-01-05T09:00:00-04:30</lastmod>
   </url>
   
   <url>
     <loc>https://mrugankakarte.github.io/</loc>
-    <lastmod>2019-09-06T11:00:00-04:30</lastmod>
-    <priority>0</priority>
+    <lastmod>2020-01-05T09:00:00-04:30</lastmod>
   </url>
   
   <url>
-    <loc>https://mrugankakarte.github.io/blog/project-minerl/</loc>
+    <loc>https://mrugankakarte.github.io/project-minerl/</loc>
     <lastmod>2019-09-06T11:00:00-04:30</lastmod>
   </url>
   
   <url>
-    <loc>https://mrugankakarte.github.io/blog/inventory-optimization-with-reinforcement-learning/</loc>
+    <loc>https://mrugankakarte.github.io/inventory-optimization-with-reinforcement-learning/</loc>
     <lastmod>2019-06-04T13:00:00+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://mrugankakarte.github.io/blog/deep-q-learning/</loc>
+    <loc>https://mrugankakarte.github.io/deep-q-learning/</loc>
     <lastmod>2019-05-18T10:00:31+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://mrugankakarte.github.io/blog/q-learning/</loc>
+    <loc>https://mrugankakarte.github.io/q-learning/</loc>
     <lastmod>2019-05-12T20:00:31+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://mrugankakarte.github.io/blog/reinforcement-learning/</loc>
+    <loc>https://mrugankakarte.github.io/reinforcement-learning/</loc>
     <lastmod>2019-05-06T20:00:31+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://mrugankakarte.github.io/blog/toxic-comments-classifier/</loc>
+    <loc>https://mrugankakarte.github.io/toxic-comments-classifier/</loc>
     <lastmod>2018-03-25T19:00:31+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://mrugankakarte.github.io/categories/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mrugankakarte.github.io/tags/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>
