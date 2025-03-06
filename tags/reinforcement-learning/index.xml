@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reinforcement Learning on Mrugank M Akarte</title>
+    <link>http://localhost:1313/tags/reinforcement-learning/</link>
+    <description>Recent content in Reinforcement Learning on Mrugank M Akarte</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 May 2019 10:00:31 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deep Q-Learning</title>
+      <link>http://localhost:1313/blog/deep-q-learning/</link>
+      <pubDate>Sat, 18 May 2019 10:00:31 +0530</pubDate>
+      <guid>http://localhost:1313/blog/deep-q-learning/</guid>
+      <description>&lt;h1 id=&#34;deep-q-learning&#34;&gt;Deep Q-learning&lt;/h1&gt;&#xA;&lt;p&gt;We introduce deep neural networks to do the Q-Learning, hence the name Deep Q-Learning. Instead of calculating Q-values for each state-action pair, we calculate Q-values for all actions given the state and then select the action with maximum q-value. This concept was first introduced in &lt;a href=&#34;https://arxiv.org/abs/1312.5602&#34;&gt;Playing Atari with Deep Reinforcement Learning&lt;/a&gt; paper. The authors show that they were able to surpass human experts on three out of seven Atari games tested using deep neural networks to solve these reinforcement problems.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Reinforcement Learning</title>
+      <link>http://localhost:1313/blog/reinforcement-learning/</link>
+      <pubDate>Mon, 06 May 2019 20:00:31 +0530</pubDate>
+      <guid>http://localhost:1313/blog/reinforcement-learning/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Reinforcement learning is a type of machine learning problem which is solved using the past experiences and interactions of the agent with the world. In other words, Reinforcement learning is mappings of situations with the available actions to maximize a numerical reward signal. Usually rewards are positive if the action taken is desirable and negative if the action is undesirable. The agent is never told which action to take or which action is optimal for a given situation, but instead it must discover on its own which actions to take that would yield maximum reward. In many cases the action taken for a given situation may affect not only immediate reward but also the next situation and may have consequences on future rewards. These characteristics of trial and error search and delayed rewards are distinguishing features of reinforcement learning.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
