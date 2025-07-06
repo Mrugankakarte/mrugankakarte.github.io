@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import FormattedDate from '@/components/FormattedDate.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const uniqueTags = [...new Set(posts.flatMap(post => post.data.tags || []))];
+
+  return uniqueTags.map(tag => {
+    const filteredPosts = posts.filter(post => post.data.tags?.includes(tag));
+    return {
+      params: { tag: tag.toLowerCase().replace(/\s+/g, '-') },
+      props: { posts: filteredPosts, tagName: tag },
+    };
+  });
+}
+
+const { posts, tagName } = Astro.props;
+---
+
+<Layout title={`Posts tagged with "${tagName}"`} description={`A collection of posts about ${tagName}.`}>
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl mb-2">
+      Tag: {tagName}
+    </h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-10">
+      {posts.length} post{posts.length !== 1 ? 's' : ''} found.
+    </p>
+
+    <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {posts.map((post) => (
+        <li class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <a href={`/blog/${post.slug}/`}>
+            {post.data.image && (
+              <img src={post.data.image.url} alt={post.data.image.alt} class="w-full h-48 object-cover" />
+            )}
+            <div class="p-6">
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                <FormattedDate date={post.data.pubDate} />
+              </p>
+              <h2 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">
+                {post.data.title}
+              </h2>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Layout>

@@ -1,0 +1,145 @@
+---
+// src/components/BlogCarousel.astro
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from '@/components/FormattedDate.astro';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div id="blog-carousel" class="relative w-full max-w-5xl mx-auto" data-carousel="slide">
+  <!-- Carousel wrapper -->
+  <div class="relative h-96 overflow-hidden rounded-lg md:h-[32rem] shadow-2xl">
+    {posts.map((post, index) => (
+      <div
+        id={`carousel-item-${index}`}
+        class:list={[
+          "absolute inset-0 transition-opacity duration-700 ease-in-out",
+          { 'opacity-100 z-20': index === 0, 'opacity-0 z-10': index !== 0 }
+        ]}
+        data-carousel-item={index === 0 ? 'active' : ''}
+      >
+        <a href={`/blog/${post.slug}/`} class="block w-full h-full group">
+          <Image
+            src={post.data.image.src}
+            alt={post.data.image.alt}
+            widths={[400, 800, 1200]}
+            loading={index < 5 ? 'eager' : 'lazy'}
+            decoding="async"
+            sizes="(max-width: 768px) 100vw, 1200px"
+            class="absolute block w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 text-white">
+            <h3 class="text-2xl md:text-4xl font-bold leading-tight mb-2 group-hover:text-blue-400 transition-colors">
+              {post.data.title}
+            </h3>
+            <p class="text-slate-300 text-sm md:text-base">
+              <FormattedDate date={post.data.pubDate} />
+            </p>
+          </div>
+        </a>
+      </div>
+    ))}
+  </div>
+
+  <!-- Slider indicators -->
+  <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+    {posts.map((_, index) => (
+      <button
+        type="button"
+        class:list={[
+          "w-3 h-3 rounded-full transition-colors",
+          { 'bg-white': index === 0, 'bg-white/50 hover:bg-white': index !== 0 }
+        ]}
+        aria-current={index === 0}
+        aria-label={`Slide ${index + 1}`}
+        data-carousel-slide-to={index}
+      ></button>
+    ))}
+  </div>
+
+  <!-- Slider controls -->
+  <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 dark:bg-gray-800/20 group-hover:bg-white/30 dark:group-hover:bg-gray-800/40 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+      <svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+      </svg>
+      <span class="sr-only">Previous</span>
+    </span>
+  </button>
+  <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 dark:bg-gray-800/20 group-hover:bg-white/30 dark:group-hover:bg-gray-800/40 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+      <svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+      </svg>
+      <span class="sr-only">Next</span>
+    </span>
+  </button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const carouselEl = document.getElementById('blog-carousel');
+    if (!carouselEl) return;
+
+    const items = Array.from(carouselEl.querySelectorAll<HTMLElement>('[data-carousel-item]'));
+    const indicators = Array.from(carouselEl.querySelectorAll<HTMLButtonElement>('[data-carousel-slide-to]'));
+    const prevButton = carouselEl.querySelector<HTMLButtonElement>('[data-carousel-prev]');
+    const nextButton = carouselEl.querySelector<HTMLButtonElement>('[data-carousel-next]');
+
+    let currentIndex = items.findIndex(item => item.dataset.carouselItem === 'active');
+    if (currentIndex === -1) currentIndex = 0;
+
+    let intervalId: number | null = null;
+
+    function updateCarousel(newIndex: number, fromInterval = false) {
+      if (newIndex < 0) newIndex = items.length - 1;
+      if (newIndex >= items.length) newIndex = 0;
+
+      items[currentIndex].classList.remove('opacity-100', 'z-20');
+      items[currentIndex].classList.add('opacity-0', 'z-10');
+      items[currentIndex].dataset.carouselItem = '';
+      indicators[currentIndex].classList.remove('bg-white');
+      indicators[currentIndex].classList.add('bg-white/50');
+      indicators[currentIndex].setAttribute('aria-current', 'false');
+
+      items[newIndex].classList.remove('opacity-0', 'z-10');
+      items[newIndex].classList.add('opacity-100', 'z-20');
+      items[newIndex].dataset.carouselItem = 'active';
+      indicators[newIndex].classList.add('bg-white');
+      indicators[newIndex].classList.remove('bg-white/50');
+      indicators[newIndex].setAttribute('aria-current', 'true');
+
+      currentIndex = newIndex;
+
+      if (!fromInterval) {
+        resetInterval();
+      }
+    }
+
+    function startInterval() {
+      if (intervalId) clearInterval(intervalId);
+      intervalId = setInterval(() => {
+        updateCarousel(currentIndex + 1, true);
+      }, 5000); // Rotate every 5 seconds
+    }
+
+    function resetInterval() {
+      startInterval();
+    }
+
+    nextButton?.addEventListener('click', () => updateCarousel(currentIndex + 1));
+    prevButton?.addEventListener('click', () => updateCarousel(currentIndex - 1));
+
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => updateCarousel(index));
+    });
+
+    startInterval();
+  });
+</script>

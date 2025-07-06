@@ -1,0 +1,45 @@
+---
+// src/components/BlogImage.astro
+import { Image } from 'astro:assets';
+
+// Define the properties the component accepts.
+// `src` is an imported image object from the /src/assets directory.
+// `alt` is required for accessibility.
+// `caption`, `width`, and `height` are optional for styling.
+interface Props {
+  src: ImageMetadata | Promise<{ default: ImageMetadata }>;
+  alt: string;
+  caption?: string;
+  width?: number;
+  height?: number;
+}
+
+const { src, alt, caption, width, height } = Astro.props;
+
+// Base classes are always applied for consistent styling.
+const baseClasses = "rounded-lg shadow-xl w-full h-auto border border-night/10 dark:border-sand/10";
+
+// If a specific display width is provided, we use it to set a max-width style.
+// Otherwise, we add the `max-w-3xl` class for a default responsive width.
+const imageStyles = width ? { maxWidth: `${width}px` } : {};
+const finalClasses = width ? baseClasses : `${baseClasses} max-w-3xl`;
+---
+
+<figure class="my-8 flex flex-col items-center gap-2 not-prose">
+  <Image
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    class={finalClasses}
+    style={imageStyles}
+    loading="lazy"
+    decoding="async"
+    quality="mid"
+  />
+  {caption && (
+    <figcaption class="text-sm text-center text-night/70 dark:text-sand/70 italic mt-2">
+      {caption}
+    </figcaption>
+  )}
+</figure>

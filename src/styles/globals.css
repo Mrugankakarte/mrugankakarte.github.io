@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Custom prose styles to reduce subheader size while keeping body text large */
+  .prose {
+       -webkit-hyphens: auto;
+       -moz-hyphens: auto;
+       -ms-hyphens: auto;
+       hyphens: auto;
+     }
+  .prose-lg h2 {
+    @apply mb-4 mt-12 text-2xl font-bold tracking-tight;
+  }
+  .prose-lg h3 {
+    @apply mb-3 mt-8 text-xl font-semibold tracking-tight;
+  }
+  .prose-lg h4 {
+    @apply mb-2 mt-6 text-lg font-semibold tracking-tight;
+  }
+}

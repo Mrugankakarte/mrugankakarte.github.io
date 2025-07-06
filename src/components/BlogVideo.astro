@@ -1,0 +1,33 @@
+---
+// src/components/BlogVideo.astro
+interface Props {
+  mp4: string;
+  caption?: string;
+  width?: number;
+  height?: number;
+}
+
+const { mp4, caption, width, height } = Astro.props;
+
+// Base classes are always applied.
+const baseClasses = "rounded-lg shadow-xl w-full h-auto border border-night/10 dark:border-sand/10";
+
+// If a width is provided, we use it to set a max-width style.
+// Otherwise, we add the `max-w-3xl` class for default responsive behavior.
+const videoStyles = width ? { maxWidth: `${width}px` } : {};
+const finalClasses = width ? baseClasses : `${baseClasses} max-w-3xl`;
+---
+<div class="my-8 flex flex-col items-center gap-2 not-prose">
+  <video
+    class={finalClasses}
+    style={videoStyles}
+    src={mp4}
+    width={width || 800}
+    height={height || 450}
+    controls
+    preload="metadata"
+  >
+    Your browser does not support the video tag.
+  </video>
+  {caption && <figcaption class="text-sm text-center text-night/70 dark:text-sand/70 italic mt-2">{caption}</figcaption>}
+</div>
