@@ -1,0 +1,24 @@
+---
+// src/components/Header.astro
+import { Image } from 'astro:assets';
+import ThemeToggle from './ThemeToggle.astro';
+import siteLogo from '../favicon.ico';
+---
+<header class="bg-sand/80 dark:bg-night/80 backdrop-blur-sm sticky top-0 z-40 w-full border-b border-night/10 dark:border-sand/10">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="flex items-center justify-between h-16">
+			<a href="/" class="flex items-center gap-x-3 text-2xl font-serif font-bold text-night dark:text-sand hover:text-night-shadow dark:hover:text-sand-shadow transition-colors">
+				<Image src={siteLogo} alt="Site Logo" width={32} height={32} class="h-8 w-8" loading="eager" decoding="async"/>
+				<span>Mrugank Akarte</span>
+			</a>
+			<div class="flex items-center gap-6">
+				<nav class="flex items-center gap-4">
+					<a href="/blog" class="text-night/80 dark:text-sand/80 hover:text-night dark:hover:text-sand transition-colors">Blog</a>
+					<a href="/tags" class="text-night/80 dark:text-sand/80 hover:text-night dark:hover:text-sand transition-colors">Tags</a>
+				</nav>
+				<!-- 2. Add the ThemeToggle component here -->
+				<ThemeToggle />
+			</div>
+		</div>
+	</div>
+</header>

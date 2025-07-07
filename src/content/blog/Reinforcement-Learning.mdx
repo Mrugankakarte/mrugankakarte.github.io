@@ -1,0 +1,71 @@
+---
+title: "An Introduction to Reinforcement Learning"
+description: "A foundational guide to Reinforcement Learning, covering key concepts like policies, rewards, value functions, and Markov Decision Processes (MDP)."
+pubDate: 2019-05-06T20:00:31+05:30
+image:
+  src: '../../assets/images/main/reinforcement-learning.webp'
+  alt: 'A diagram showing the agent-environment interaction loop in Reinforcement Learning.'
+tags: ["Reinforcement Learning", "Machine Learning", "AI"]
+---
+import BlogImage from '@/components/BlogImage.astro';
+import mdpImg from '../../assets/images/rl-mdp.PNG';
+import rlvaluefun from '../../assets/images/rl-valuefun.PNG'
+import rlactionvaluefunction from '../../assets/images/rl-actionvaluefunction.PNG'
+
+## Introduction
+
+Reinforcement learning is a type of machine learning problem which is solved using the past experiences and interactions of the agent with the world. In other words, Reinforcement learning is mappings of situations with the available actions to maximize a numerical reward signal. Usually rewards are positive if the action taken is desirable and negative if the action is undesirable. The agent is never told which action to take or which action is optimal for a given situation, but instead it must discover on its own which actions to take that would yield maximum reward. In many cases the action taken for a given situation may affect not only immediate reward but also the next situation and may have consequences on future rewards. These characteristics of trial and error search and delayed rewards are distinguishing features of reinforcement learning.
+
+Reinforcement learning is different from supervised and unsupervised learning. Supervised learning is learning for a training set of known and labelled examples. Each example contains a set of features with its appropriate label. Reinforcement learning is an interactive problem in which it is often impossible to obtain the examples of desired behaviour that are both correct and representative of all situation for which the agent must act. Unsupervised learning is about finding hidden structure in an unlabelled dataset. Reinforcement learning is about maximizing the reward by taking actions in an unseen situation. Although finding hidden structure in data will be useful for learning but it does not address its the objective. Hence, Reinforcement is considered different from supervised and unsupervised machine learning.
+
+The problem of reinforcement learning is formalized as a fully observed or partial Markov Decision Process (MDP). We will discuss MDP subsequently, first let’s discuss the basic terminologies used in reinforcement learning and one the most important challenges faced, trade-off between exploration and exploitation. To obtain a positive reward, the agent has to take right action for a given situation. Since the agent is never told what the optimal action is, the agent must take some action and experience the consequences. It must try all the actions available and then select the action which gives maximum reward. In this process the agent has to *exploit* what he already knows from the previous actions taken and *explore* all the possible options to make a better action selection in the future. The dilemma here is that neither exploration nor exploitation can be pursued exclusively without failing at task. The agent must try a variety of actions and progressively favour those which appear to be best.
+
+<BlogImage src={mdpImg} alt="Markov Decision Process Diagram" caption="Markov Decision Process (Source: Richard Sutton and Andrew Barto, Reinforcement learning Second Edition 2018)" />
+
+## Reinforcement learning system
+
+A reinforcement learning system consists of **a policy**, **a reward signal**, **a value function**, and optionally **a model** of the environment.
+
+-   **Policy** defines what action to take at any given situation (hereafter referred as *state*).
+-   **Reward signal** defines the goal of a reinforcement learning problem.
+-   **Value function** defines what is good in the long run. It gives an estimate of the total amount of reward that an agent can accumulate over the future starting from that state.
+-   **Model** is something that can mimic an environment. Reinforcement learning problems which use models are known as *model-based* methods.
+
+## Markov Decision Process
+
+Markov Decision Process (MDP) provide a framework to model decision making process where outcomes are partly random and partly under the control of decision maker. The learner or decision maker is called an *agent*. The agent interacts with the *environment* which comprises of everything except the agent.
+
+The process flow in a MDP is as follows:
+1. We get the current state from the environment
+2. Agent takes action from all possible actions for the given state
+3. Environment reacts to the action taken by agent and present the reward and next state
+4. We modify the agents policy based on the rewards received
+5. Agent again acts for the new state using the modified policy
+
+This process continues until the task is accomplished.
+
+## Policy and Value Functions
+
+*Value functions* are functions that estimate "how good" it is for an agent to be in a given state. This is defined in terms of future rewards that can be expected. Value functions are defined with respect to particular ways of acting called *policies*.
+
+A *policy function* can be defined as a mapping between the state and the probability of selecting each possible action. Mathematically value function is defined as follows:
+
+<BlogImage src={rlvaluefun} alt="Value function" caption="State Value Function"/>
+where, **E<sub>&#00960;</sub>[.]** denotes expected value of random variable given that agent follows the policy *&#00960;* and *t* is any time-step. This is also known as *state-value function for policy &#00960;*.
+
+Similarly *action-value function* is defined as value of taking action *a*, given state *s* under policy &#00960;.
+
+<BlogImage src={rlactionvaluefunction} alt="Action Value function" caption="Action Value Function"/>
+
+
+### Value-based reinforcement learning
+
+In value-based learning, the objective is to optimize the value function. The agent will use this value function to select the action for a given state. The agent takes the action with the biggest value.
+
+### Policy-based reinforcement learning
+
+In policy-based reinforcement learning, the objective is to optimize the policy function &#00960;(s). The policy determines the probability for each possible action given a state, and an action from this probability distribution is selected.
+
+In the next article, we will discuss the value-based methods called *Q-learning* and *Deep Q-Learning*.
+
+*PS: Most of the details are from Barto and Sutton, Reinforcement Book, Second Edition 2018. This post is my understanding of the topics from the book.*

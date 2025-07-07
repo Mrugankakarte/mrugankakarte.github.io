@@ -1,0 +1,48 @@
+---
+// src/pages/blog/[...slug].astro
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import FormattedDate from '@/components/FormattedDate.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+ <Layout
+ 	title={post.data.title}
+ 	description={post.data.description}
+ 	image={post.data.image?.src}
+ >
+	<div class="relative isolate overflow-hidden bg-sand-shadow dark:bg-night-shadow py-16 sm:py-24">
+		<!-- Subtle grid pattern -->
+        <div
+			class="absolute inset-0 -z-10 h-full w-full"
+			style="background-image: url('/grid.svg'); background-position: 10px 10px; opacity: 0.05;"
+		></div>
+
+		<article class="max-w-5xl mx-auto px-6 lg:px-8">
+			<header class="mb-10 border-b border-night/10 dark:border-sand/20 pb-8">
+				<h1 class="text-4xl md:text-5xl font-serif font-extrabold tracking-tight text-night dark:text-sand mb-4">
+					{post.data.title}
+				</h1>
+				<p class="text-lg text-night/80 dark:text-sand/80 mb-4">
+					{post.data.description}
+				</p>
+				<div class="text-sm text-night/70 dark:text-sand/70">
+					<span>Published on <FormattedDate date={post.data.pubDate} /></span>
+				</div>
+			</header>
+
+			<div class="prose prose-lg dark:prose-invert max-w-none text-justify">
+				<Content />
+			</div>
+		</article>
+	</div>
+</Layout>

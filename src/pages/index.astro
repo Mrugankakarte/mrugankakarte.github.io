@@ -1,0 +1,180 @@
+---
+// src/pages/index.astro
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '@/layouts/Layout.astro';
+import BlogCarousel from '@/components/BlogCarousel.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import profileImage from '../assets/profile.webp';
+import nameAudio from '../assets/audios/audio_resume_overview.wav';
+
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 5);
+---
+
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<!-- Main Hero Section -->
+	<div class="relative isolate overflow-hidden">
+		<!-- Subtle grid background -->
+		<div
+			class="absolute inset-0 -z-10 h-full w-full"
+			style="background-image: url('/grid.svg'); background-position: 10px 10px; opacity: 0.1;"
+		>
+		</div>
+
+		<!-- Gradient overlays for a modern feel -->
+		<div
+			class="absolute -top-80 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl"
+			aria-hidden="true"
+		>
+			<div
+				class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#4caf50] to-[#1a2a22] opacity-20 dark:opacity-30"
+				style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+			>
+			</div>
+		</div>
+
+		<!-- Hero Content -->
+		<div class="max-w-3xl mx-auto px-6 text-center py-24 sm:py-32">
+			<div class="mb-8">
+				<Image
+					src={profileImage}
+					alt="Myself"
+					width={400}
+					height={400}
+					class="squared-full mx-auto shadow-lg border-4 border-night/10 dark:border-sand/20"
+					loading="eager"
+				/>
+			</div>
+
+			<div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-4 mb-6">
+             	<h1 class="text-4xl font-serif font-bold tracking-tight text-night dark:text-sand sm:text-6xl">
+             		Mrugank Akarte
+             	</h1>
+            </div>
+
+             <!-- Audio Player with Progress Bar -->
+             <div class="flex items-center justify-center gap-x-4 max-w-md mx-auto">
+             <button id="play-audio-button" aria-label="Play or pause audio resume overview"
+             	class="flex-shrink-0 bg-sand-shadow/40 dark:bg-night-shadow/40 border border-night/10 dark:border-sand/20 rounded-full p-2 text-night/70 dark:text-sand/70 hover:bg-sand-shadow hover:text-night dark:hover:bg-night-shadow transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-sand dark:focus:ring-offset-night focus:ring-accent"
+             	>
+             <!-- Play Icon -->
+             <svg id="play-icon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+             	<path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+             </svg>
+             <!-- Pause Icon -->
+             <svg id="pause-icon" class="h-5 w-5 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M5.75 4.75a.75.75 0 00-.75.75v9.5c0 .414.336.75.75.75h1.5a.75.75 0 00.75-.75v-9.5a.75.75 0 00-.75-.75h-1.5zm7 0a.75.75 0 00-.75.75v9.5c0 .414.336.75.75.75h1.5a.75.75 0 00.75-.75v-9.5a.75.75 0 00-.75-.75h-1.5z" />
+             </svg>
+             </button>
+             <!-- Added id and cursor-pointer for seeking functionality -->
+             <div id="progress-bar-container" class="w-full bg-sand-shadow/40 dark:bg-night-shadow/40 rounded-full h-2 overflow-hidden cursor-pointer">
+             <div id="progress-bar" class="bg-accent h-2 rounded-full" style="width: 0%"></div>
+             </div>
+             <audio id="name-audio" src={nameAudio} preload="auto" class="hidden"></audio>
+             </div>
+             <p class="mt-2 text-sm text-night/60 dark:text-sand/60">Audio Resume Overview by <a href="https://notebooklm.google.com/" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent dark:hover:text-accent transition-colors">NotebookLM</a>
+             </p>
+
+             <p class="mt-8 text-lg leading-8 text-night/80 dark:text-sand/80">
+
+            <p class="mt-6 text-lg leading-8 text-night/80 dark:text-sand/80">
+			<a href="/files/Resume_Mrugank_Akarte.pdf" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent dark:hover:text-accent transition-colors">
+				Senior Machine Learning Engineer @Macys</a>
+			</p>
+			<p class="mt-4 max-w-xl mx-auto text-base leading-7 text-night/80 dark:text-sand/80">
+             	I build product recommendation models.<br>My research interests are Distributed ML systems and Graph Neural Networks.
+             </p>
+
+
+			<div class="mt-10 flex items-center justify-center gap-x-6">
+				<a
+					href="/blog"
+					class="rounded-md bg-night px-4 py-3 text-base font-semibold text-sand shadow-sm hover:bg-night-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-shadow transition-colors dark:bg-sand dark:text-night dark:hover:bg-sand-shadow"
+				>
+					Read The Blog
+				</a>
+				<a
+					href="#latest-posts"
+					class="text-base font-semibold leading-6 text-night dark:text-sand hover:text-night-shadow dark:hover:text-sand-shadow"
+				>
+					Latest Posts <span aria-hidden="true">→</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Latest Blog Posts Section -->
+	<section id="latest-posts" class="py-24 sm:py-32 bg-sand-shadow dark:bg-night-shadow">
+		<div class="mx-auto px-6 lg:px-8">
+			<div class="mx-auto max-w-2xl text-center">
+				<h2 class="text-3xl font-serif font-bold tracking-tight text-night dark:text-sand sm:text-4xl">
+					From the Blog
+				</h2>
+				<p class="mt-2 text-lg leading-8 text-night/70 dark:text-sand/70">
+					My latest thoughts on AI, development, and everything in between.
+				</p>
+			</div>
+			<div class="mt-16">
+				<BlogCarousel posts={posts} />
+			</div>
+		</div>
+	</section>
+</Layout>
+<script>
+	const playButton = document.getElementById('play-audio-button');
+ 	const audio = document.getElementById('name-audio') as HTMLAudioElement;
+ 	const progressBar = document.getElementById('progress-bar');
+ 	const progressBarContainer = document.getElementById('progress-bar-container');
+    const playIcon = document.getElementById('play-icon');
+ 	const pauseIcon = document.getElementById('pause-icon');
+
+ 	if (playButton && audio && progressBar && progressBarContainer && playIcon && pauseIcon) {
+      	// Toggle play/pause on button click
+ 		playButton.addEventListener('click', () => {
+ 			if (audio.paused) {
+ 				audio.play();
+ 			} else {
+ 				audio.pause();
+ 			}
+ 		});
+
+ 		// Update icon when audio plays
+ 		audio.addEventListener('play', () => {
+ 			playIcon.classList.add('hidden');
+ 			pauseIcon.classList.remove('hidden');
+ 		});
+
+ 		// Update icon when audio is paused
+ 		audio.addEventListener('pause', () => {
+ 			playIcon.classList.remove('hidden');
+ 			pauseIcon.classList.add('hidden');
+ 		});
+     	// Update progress bar as audio plays
+     	audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${progress}%`;
+        }
+     	});
+
+     	// Reset player when audio finishes
+     	audio.addEventListener('ended', () => {
+     		playIcon.classList.remove('hidden');
+     		pauseIcon.classList.add('hidden');
+     		progressBar.style.width = '0%';
+     	});
+		// Allow seeking by clicking on the progress bar
+ 		progressBarContainer.addEventListener('click', (e) => {
+ 			const rect = progressBarContainer.getBoundingClientRect();
+ 			const clickX = e.clientX - rect.left;
+ 			const width = rect.width;
+ 			const duration = audio.duration;
+
+ 			if (duration) { // Make sure we have a duration to avoid NaN
+ 				audio.currentTime = (clickX / width) * duration;
+ 			}
+ 		});
+ }
+ </script>

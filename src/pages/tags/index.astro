@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+
+const posts = await getCollection('blog');
+
+// Calculate unique tags and their counts
+const tagCounts = new Map<string, number>();
+posts.forEach(post => {
+  post.data.tags?.forEach(tag => {
+    tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+  });
+});
+
+// Sort tags alphabetically
+const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => a.localeCompare(b));
+---
+
+<Layout title="All Tags" description="A list of all topics I've written about.">
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl mb-10">
+      All Tags
+    </h1>
+    <div class="flex flex-wrap gap-4">
+      {sortedTags.map(tag => (
+        <a href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`} class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm font-medium px-3 py-1.5 rounded-full hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">
+          {tag} ({tagCounts.get(tag)})
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

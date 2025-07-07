@@ -1,0 +1,18 @@
+---
+// src/components/DownloadLink.astro
+interface Props {
+  href: string;
+  text?: string;
+}
+const { href, text = 'Download File' } = Astro.props;
+---
+<div class="my-6 not-prose text-center">
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-block rounded-md bg-accent px-4 py-2.5 text-base font-semibold text-white shadow-sm hover:bg-accent/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent transition-colors"
+  >
+    {text} <span aria-hidden="true">→</span>
+  </a>
+</div>
