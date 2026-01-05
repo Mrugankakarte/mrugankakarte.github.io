@@ -1,22 +1,21 @@
-// src/theme.config.ts
+ // src/theme.config.ts
 
-// This is the main configuration object.
-// Let's try a dark, forest-green color theme.
-export const themeConfig = {
-	colors: {
-		// Light Mode Colors
-		sand: '#f0f4f0', // A very light, soft green-tinted white
-		'sand-shadow': '#dbe5db', // A subtle, darker green for light mode accents
+ // 1. Import the themes you want to use
+ import { defaultTheme } from './themes/default'; // The original theme
+ import { oceanTheme } from './themes/ocean'; // The one we added before
+ import { forestTheme } from './themes/forest'; // New: Forest
+ import { sunsetTheme } from './themes/sunset'; // New: Sunset
+ import { monochromeTheme } from './themes/monochrome'; // New: Monochrome
+ import { draculaTheme } from './themes/dracula'; // New: Dracula
+ import { solarizedLightTheme } from './themes/solarizedLight'; // New: Solarized Light
+ import { nordTheme } from './themes/nord'; // New: Nord
 
-		// Dark Mode Colors
-		night: '#1a2a22', // A deep, dark forest green
-		'night-shadow': '#243830', // A slightly lighter dark green for accents
+ // 2. Set the active theme
+ // To change themes, just swap `defaultTheme` with `oceanTheme` or any other theme you create.
+ const activeTheme = defaultTheme;
 
-		// Universal Accent Color
-		accent: '#4caf50', // A vibrant, accessible green for links and highlights
-	},
-	fonts: {
-		sans: ['Lato', 'sans-serif'],
-		serif: ['"Playfair Display"', 'serif'],
-	},
-};
+ // 3. Export the active theme's configuration for the rest of the site
+ export const themeConfig = {
+ 	colors: activeTheme.colors,
+ 	fonts: activeTheme.fonts,
+ };

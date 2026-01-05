@@ -2,7 +2,9 @@
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 
-const posts = await getCollection('blog');
+const posts = await getCollection('blog', ({ data }) => {
+  return import.meta.env.PROD ? data.pubDate <= new Date() : true;
+});
 
 // Calculate unique tags and their counts
 const tagCounts = new Map<string, number>();
