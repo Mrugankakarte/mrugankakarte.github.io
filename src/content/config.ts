@@ -14,6 +14,7 @@ const blogCollection = defineCollection({
         alt: z.string(),
     }).optional(),
     tags: z.array(z.string()).optional(),
+    doi: z.string().optional(), // Added DOI support
   }),
 });
 

@@ -1,0 +1,46 @@
+---
+// src/components/CiteBlock.astro
+interface Props {
+  title: string;
+  author: string;
+  pubDate: Date;
+  url: string;
+  doi?: string;
+}
+
+const { title, author, pubDate, url, doi } = Astro.props;
+const year = pubDate.getFullYear();
+const siteUrl = "https://mrugankakarte.github.io"; // Adjust this if needed
+const fullUrl = new URL(url, siteUrl).toString();
+
+// Generate BibTeX
+const bibtex = `@misc{mrugankakarte${year},
+  author = {${author}},
+  title = {${title}},
+  year = {${year}},
+  url = {${fullUrl}},
+  ${doi ? `note = {DOI: ${doi}}` : ""}
+}`;
+---
+
+<div class="mt-16 p-6 border-2 border-night/10 dark:border-sand/10 rounded-xl bg-night/[0.02] dark:bg-sand/[0.02] not-prose">
+  <h3 class="text-xl font-serif font-bold mb-4 text-night dark:text-sand">Cite this post</h3>
+
+  <div class="space-y-4 text-sm">
+    <!-- APA Style -->
+    <div>
+      <p class="font-semibold text-xs uppercase tracking-wider opacity-50 mb-1 text-night dark:text-sand">APA</p>
+      <p class="italic text-night/80 dark:text-sand/80">
+        {author}. ({year}). {title}. Retrieved from {fullUrl} {doi && `(DOI: ${doi})`}
+      </p>
+    </div>
+
+    <!-- BibTeX -->
+    <div>
+      <p class="font-semibold text-xs uppercase tracking-wider opacity-50 mb-1 text-night dark:text-sand">BibTeX</p>
+      <div class="relative group">
+        <pre class="bg-night/5 dark:bg-sand/5 p-3 rounded overflow-x-auto text-night/90 dark:text-sand/90 font-mono text-xs"><code>{bibtex}</code></pre>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 ---
 title: "Graph Neural Networks for Outfit prediction - Part 1"
 description: "Learn how Graph Neural Networks (GNN) can be used to predict a complimentary product."
-pubDate: 2026-01-29T10:00:31+05:30
+pubDate: 2026-03-27T10:00:31+05:30
 image:
   src: '../../assets/images/main/Graph1.png'
   alt: 'Sample outfit prediction of farfetch data'
@@ -35,9 +35,7 @@ PyTorch Geometric provides the `HeteroData` class to represent heterogeneous gra
 
 Let's look at an example from our project and build a graph using the data from Farfetch competition.
 
-TODO: add build graph code
-
-We load a pre-built `HeteroData` object
+We load a pre-built `HeteroData` object. We will focus on how to build a graph in upcoming posts.
 ```python
 import torch
 from torch_geometric.data import HeteroData
@@ -45,7 +43,7 @@ from torch_geometric.data import HeteroData
 graph = torch.load("../data/graph/graph.pt")
 
 ```
-```
+```python
 HeteroData(
   category={
     num_nodes=129,
@@ -71,7 +69,7 @@ print(graph.metadata())
 
 This will output the different node types and edge types in our graph, for example:
 
-```
+```python
 (['category', 'product'],  # Node Types
  [('product', 'cat_prod_link', 'category'),  # Edge Types
   ('product', 'product_outfit', 'product'),
@@ -81,7 +79,7 @@ This will output the different node types and edge types in our graph, for examp
 
 This tells us we have two node types (`category`, `product`) and three edge types.
 
-```
+```python
 num_node_dict = {}
 
 for node_type in graph.node_types:
@@ -132,7 +130,7 @@ class Predictor(torch.nn.Module):
 
 Now, we can use `to_hetero` to wrap this GNN and make it compatible with our `HeteroData` object. This layer will be applied on all of the different edge types in the graph. For example in our graph we have 3 edge types so it works as follows
 
-```
+```python
 message_passing = {
                     'cat_prod_link': GAT(),
                     'product_outfit': GAT(),
@@ -273,8 +271,17 @@ class Model(torch.nn.Module):
 )
 model parameters: 1186433
 ```
-### Conclusion
+### Summary
 
 Heterogeneous graphs are a powerful way to model complex, real-world systems. With PyTorch Geometric's `HeteroData` and `to_hetero`, we can easily adapt our existing GNN architectures to handle this complexity. This allows us to build sophisticated models for tasks like link prediction and node classification in heterogeneous domains.
+
+In this blog post, we explored:
+- The concept of heterogeneous graphs and their multi-entity nature.
+- The use of the `HeteroData` object in PyG to manage complex graph structures.
+- How the `to_hetero` function simplifies the conversion of standard GNNs into heterogeneous variants.
+- The high-level architecture of a model designed for link prediction in an e-commerce context.
+
+### What's Next?
+Now that we understand the architecture of a Heterogeneous GNN, the next question is: how do we actually build the graph from our raw data? In the next post, *Building Your First Heterogeneous Graph*, we will look into how to transform tabular DataFrames into a `HeteroData` object using the PyTorch Geometric library.
 
 ---

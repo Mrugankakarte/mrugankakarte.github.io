@@ -3,6 +3,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
+import CiteBlock from '@/components/CiteBlock.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog', ({ data }) => {
@@ -45,6 +46,14 @@ const { Content } = await post.render();
 			<div class="prose prose-lg dark:prose-invert max-w-none text-justify">
 				<Content />
 			</div>
+
+            <CiteBlock
+                title={post.data.title}
+                author="Mrugank Akarte"
+                pubDate={post.data.pubDate}
+                url={Astro.url.pathname}
+                doi={post.data.doi}
+            />
 		</article>
 	</div>
 </Layout>
