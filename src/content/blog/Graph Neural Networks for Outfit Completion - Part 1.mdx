@@ -4,13 +4,13 @@ description: "Learn how Graph Neural Networks (GNN) can be used to predict a com
 pubDate: 2026-03-27T10:00:31+05:30
 image:
   src: '../../assets/images/main/Graph1.png'
-  alt: 'Sample outfit prediction of farfetch data'
+  alt: 'Sample outfit prediction of fashion data'
 tags: ["Deep Learning", "Graph Neural Networks", "PyTorch"]
 ---
 import BlogImage from '@/components/BlogImage.astro';
 import BlogVideo from '@/components/BlogVideo.astro';
-import graph1 from '../../assets/images/farfetch challenge/Graph1.png';
-import Img1 from '../../assets/images/farfetch challenge/samecat_1.png';
+import graph1 from '../../assets/images/fashion/Graph1.png';
+import Img1 from '../../assets/images/fashion/samecat_1.png';
 import Center from '@/components/Center.astro';
 
 
@@ -31,9 +31,9 @@ In contrast, a heterogeneous graph can have multiple types of nodes and edges. C
 
 PyTorch Geometric provides the `HeteroData` class to represent heterogeneous graphs. It's a dictionary-like object that stores the nodes and edges for each type.
 
-<BlogImage src={graph1} alt="Sample graph from training batch" caption="Subgraph of farfetch graph from training batch"/>
+<BlogImage src={graph1} alt="Sample graph from training batch" caption="Subgraph of graph from training batch"/>
 
-Let's look at an example from our project and build a graph using the data from Farfetch competition.
+Let's look at an example from our project and build a graph using the data from Polyvore Dataset.
 
 We load a pre-built `HeteroData` object. We will focus on how to build a graph in upcoming posts.
 ```python
