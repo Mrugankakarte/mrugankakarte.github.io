@@ -7,3 +7,6 @@ export const SITE_DESCRIPTION = 'Welcome to my personal website. Explore my proj
 // For the blog section and RSS feed
 export const BLOG_TITLE = "Mrugank Akarte's Blog";
 export const BLOG_DESCRIPTION = 'A collection of my thoughts and writings on technology, machine learning, and more.';
+
+// Google Analytics
+export const GTAG_ID = 'G-VK80YSZR6C';
